@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Capolavour", "Capolavour\Capolavour.csproj", "{7FDF266D-171A-425C-8BD8-8BB7DE429AE4}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7FDF266D-171A-425C-8BD8-8BB7DE429AE4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FDF266D-171A-425C-8BD8-8BB7DE429AE4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FDF266D-171A-425C-8BD8-8BB7DE429AE4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FDF266D-171A-425C-8BD8-8BB7DE429AE4}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {BD629EAD-8F61-4E1B-A947-6A560FA12BD1}
+	EndGlobalSection
+EndGlobal

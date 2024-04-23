@@ -31,11 +31,19 @@ namespace Capolavour
             string giocatore;
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
-            giocatore = Nome+" "+ Cognome + " " + id;
-            Nome.ElementA
-            Giocatori.Add(giocatore);
-            listView1.Items.Add(giocatore);
+            giocatore = Nome+" "+ Cognome;
 
+            if (Giocatori.Contains(id))
+            {
+                MessageBox.Show("Giocatore inserito");
+            }
+            else {
+                Giocatori.Add(giocatore);
+                listView1.Items.Add(giocatore);
+                Giocatori.Add(id);
+                listView1.Items.Add(id);
+            }
+      
         }
         private void Add_Click(object sender, EventArgs e)
         {
@@ -50,11 +58,15 @@ namespace Capolavour
             string giocatore;
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
-            giocatore = Nome + " " + Cognome + " " + id;
-            if (Giocatori.Contains(giocatore))
+            giocatore = Nome + " " + Cognome;
+            if (Giocatori.Contains(id))
             {
                 Giocatori.Remove(giocatore);
-
+                Giocatori.Remove(id);
+            }
+            else
+            {
+                MessageBox.Show("Giocatore non trovato");
             }
             Visualizza();
         }

@@ -103,11 +103,21 @@ namespace Capolavour
                     Giocatori[a] = Giocatori[a] + "   "+(a+1).ToString();
                 }
                 Visualizza();
+
             }
             else
             {
                 MessageBox.Show("Impossibile iniziare il torneo, Numero di partecipaneti insufficenti");
             }
         }
+        public void coppie () 
+        { 
+            Random P = new Random();   
+            List<string> Pairing = new List<string>();
+            for (int a = 0; a < Giocatori.Count; a++)
+            {
+                Pairing[a] = Giocatori[a];
+            }
+        }   
     }
 }

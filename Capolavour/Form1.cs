@@ -25,23 +25,20 @@ namespace Capolavour
 
 
 
-
         public void AddGiocatore()
         {
             string giocatore;
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
-            giocatore = Nome+" "+ Cognome;
+            giocatore = Nome + " " + Cognome + " " + id;
 
-            if (Giocatori.Contains(id))
+            if (Giocatori.Contains(giocatore))
             {
                 MessageBox.Show("Giocatore inserito");
             }
             else {
                 Giocatori.Add(giocatore);
                 listView1.Items.Add(giocatore);
-                Giocatori.Add(id);
-                listView1.Items.Add(id);
             }
       
         }
@@ -58,11 +55,10 @@ namespace Capolavour
             string giocatore;
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
-            giocatore = Nome + " " + Cognome;
-            if (Giocatori.Contains(id))
+            giocatore = Nome + " " + Cognome + " " + id;
+            if (Giocatori.Contains(giocatore))
             {
                 Giocatori.Remove(giocatore);
-                Giocatori.Remove(id);
             }
             else
             {
@@ -95,5 +91,23 @@ namespace Capolavour
 
         }
 
+
+
+        private void start_Click(object sender, EventArgs e)
+        {
+            if (Giocatori.Count > 2)
+            {
+                for (int a = 0; a < Giocatori.Count; a++)
+                {
+                   
+                    Giocatori[a] = Giocatori[a] + "   "+(a+1).ToString();
+                }
+                Visualizza();
+            }
+            else
+            {
+                MessageBox.Show("Impossibile iniziare il torneo, Numero di partecipaneti insufficenti");
+            }
+        }
     }
 }

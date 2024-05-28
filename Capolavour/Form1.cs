@@ -6,11 +6,14 @@ using System.Data;
 using System.Diagnostics.Eventing.Reader;
 using System.Drawing;
 using System.Linq;
+using System.Net;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Windows.Forms;
+using System.Xml.Linq;
+
 
 namespace Capolavour
 {
@@ -36,11 +39,12 @@ namespace Capolavour
             {
                 MessageBox.Show("Giocatore inserito");
             }
-            else {
+            else
+            {
                 Giocatori.Add(giocatore);
                 listView1.Items.Add(giocatore);
             }
-      
+
         }
         private void Add_Click(object sender, EventArgs e)
         {
@@ -80,9 +84,9 @@ namespace Capolavour
         {
             listView1.Items.Clear();
             for (int j = 0; j < Giocatori.Count; j++)
-                {
+            {
                 listView1.Items.Add(Giocatori[j]);
-                }
+            }
         }
 
 
@@ -97,27 +101,49 @@ namespace Capolavour
         {
             if (Giocatori.Count > 2)
             {
-                for (int a = 0; a < Giocatori.Count; a++)
-                {
-                   
-                    Giocatori[a] = Giocatori[a] + "   "+(a+1).ToString();
-                }
                 Visualizza();
-
+                AbbinaElementiCasualmente(Giocatori);
             }
             else
             {
                 MessageBox.Show("Impossibile iniziare il torneo, Numero di partecipaneti insufficenti");
             }
         }
-        public void coppie () 
-        { 
-            Random P = new Random();   
-            List<string> Pairing = new List<string>();
-            for (int a = 0; a < Giocatori.Count; a++)
+
+       
+        public List<string> AbbinaElementiCasualmente(List<string> elementi)
+        {
+            Random random = new Random();
+            List<string> elementiMescolati = new List<string>(elementi);
+            int n = elementiMescolati.Count;
+
+            // Mescola gli elementi
+            for (int i = 0; i < n; i++)
             {
-                Pairing[a] = Giocatori[a];
+                int j = random.Next(i, n);
+                string temp = elementiMescolati[i];
+                elementiMescolati[i] = elementiMescolati[j];
+                elementiMescolati[j] = temp;
             }
-        }   
+            List<string> coppie = new List<string>();
+
+            // Crea le coppie
+            for (int i = 0; i < n - 1; i += 2)
+            {
+                coppie.Add((elementiMescolati[i] + "                " +elementiMescolati[i + 1]));
+            }
+
+            VisualizzaCoppie(coppie);
+
+            return coppie;
+        }
+        private void VisualizzaCoppie(List<string> coppie) 
+        {
+            listView1.Items.Clear();
+            for (int j = 0; j < coppie.Count; j++)
+            {
+                listView1.Items.Add(coppie[j]);
+            }
+        }
     }
 }

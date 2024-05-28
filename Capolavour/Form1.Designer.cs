@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
             this.nome1 = new System.Windows.Forms.TextBox();
             this.id1 = new System.Windows.Forms.TextBox();
             this.cognome1 = new System.Windows.Forms.TextBox();
@@ -44,28 +44,28 @@
             // 
             // nome1
             // 
-            this.nome1.Location = new System.Drawing.Point(188, 156);
+            this.nome1.Location = new System.Drawing.Point(188, 77);
             this.nome1.Name = "nome1";
             this.nome1.Size = new System.Drawing.Size(100, 20);
             this.nome1.TabIndex = 0;
             // 
             // id1
             // 
-            this.id1.Location = new System.Drawing.Point(191, 273);
+            this.id1.Location = new System.Drawing.Point(191, 194);
             this.id1.Name = "id1";
             this.id1.Size = new System.Drawing.Size(100, 20);
             this.id1.TabIndex = 1;
             // 
             // cognome1
             // 
-            this.cognome1.Location = new System.Drawing.Point(188, 212);
+            this.cognome1.Location = new System.Drawing.Point(188, 133);
             this.cognome1.Name = "cognome1";
             this.cognome1.Size = new System.Drawing.Size(100, 20);
             this.cognome1.TabIndex = 2;
             // 
             // Add
             // 
-            this.Add.Location = new System.Drawing.Point(12, 154);
+            this.Add.Location = new System.Drawing.Point(12, 75);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(148, 23);
             this.Add.TabIndex = 3;
@@ -79,8 +79,8 @@
             this.gioccont});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(349, 66);
+            listViewItem2});
+            this.listView1.Location = new System.Drawing.Point(318, 45);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(381, 330);
             this.listView1.TabIndex = 4;
@@ -95,7 +95,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(188, 137);
+            this.label1.Location = new System.Drawing.Point(188, 58);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(35, 13);
             this.label1.TabIndex = 5;
@@ -104,7 +104,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(188, 257);
+            this.label2.Location = new System.Drawing.Point(188, 178);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(16, 13);
             this.label2.TabIndex = 6;
@@ -113,7 +113,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(185, 193);
+            this.label3.Location = new System.Drawing.Point(185, 114);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(52, 13);
             this.label3.TabIndex = 7;
@@ -121,7 +121,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(12, 198);
+            this.button1.Location = new System.Drawing.Point(12, 119);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(148, 23);
             this.button1.TabIndex = 9;
@@ -131,7 +131,7 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(12, 273);
+            this.start.Location = new System.Drawing.Point(12, 194);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(148, 23);
             this.start.TabIndex = 10;
@@ -143,7 +143,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1392, 533);
             this.Controls.Add(this.start);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.label3);

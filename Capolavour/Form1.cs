@@ -25,6 +25,9 @@ namespace Capolavour
         }
 
         private List<string> Giocatori = new List<string>();
+        private Dictionary<string, int> Vittorie = new Dictionary<string, int>();
+        private Dictionary<string, int> Sconfitte = new Dictionary<string, int>();
+        private Dictionary<string, int> Pareggi = new Dictionary<string, int>();
 
 
 
@@ -43,6 +46,9 @@ namespace Capolavour
             {
                 Giocatori.Add(giocatore);
                 listView1.Items.Add(giocatore);
+                Vittorie[giocatore] = 0;
+                Sconfitte[giocatore] = 0;
+                Pareggi[giocatore] = 0;
             }
 
         }
@@ -63,6 +69,10 @@ namespace Capolavour
             if (Giocatori.Contains(giocatore))
             {
                 Giocatori.Remove(giocatore);
+                Giocatori.Add(giocatore);
+                Vittorie[giocatore] = 0;
+                Sconfitte[giocatore] = 0;
+                Pareggi[giocatore] = 0;
             }
             else
             {
@@ -101,6 +111,11 @@ namespace Capolavour
         {
             if (Giocatori.Count > 2)
             {
+                listView1.Clear();
+                for (int j = 0; j < Giocatori.Count; j++)
+                {
+                    listView1.Items.Add(Giocatori[j]);
+                }
                 Visualizza();
                 AbbinaElementiCasualmente(Giocatori);
             }
@@ -110,7 +125,7 @@ namespace Capolavour
             }
         }
 
-       
+
         public List<string> AbbinaElementiCasualmente(List<string> elementi)
         {
             Random random = new Random();
@@ -130,14 +145,14 @@ namespace Capolavour
             // Crea le coppie
             for (int i = 0; i < n - 1; i += 2)
             {
-                coppie.Add((elementiMescolati[i] + "                " +elementiMescolati[i + 1]));
+                coppie.Add((elementiMescolati[i] + "                " + elementiMescolati[i + 1]));
             }
 
             VisualizzaCoppie(coppie);
 
             return coppie;
         }
-        private void VisualizzaCoppie(List<string> coppie) 
+        private void VisualizzaCoppie(List<string> coppie)
         {
             listView1.Items.Clear();
             for (int j = 0; j < coppie.Count; j++)
@@ -145,5 +160,73 @@ namespace Capolavour
                 listView1.Items.Add(coppie[j]);
             }
         }
-    }
+
+        public void Vittoria(object sender, EventArgs e)
+        {
+            string player = listView1.Items.ToString().Split(' ')[0];
+            if (Giocatori.Contains(player))
+            {
+                Vittorie[player]++;
+                MessageBox.Show($"Vittoria registrata per {player}");
+            }
+            else
+            {
+                MessageBox.Show("Giocatore non trovato.");
+            }
+        }
+
+        public void Pareggio(object sender, EventArgs e)
+        {
+            string player = listView1.Items.ToString().Split(' ')[0];
+            if (Giocatori.Contains(player))
+            {
+                Sconfitte[player]++;
+                MessageBox.Show($"Sconfitta registrata per {player}");
+            }
+            else
+            {
+                MessageBox.Show("Giocatore non trovato.");
+            }
+        }
+
+        public void Sconfitta(object sender, EventArgs e)
+        {
+            string player = listView1.Items.ToString().Split(' ')[0];
+            if (Giocatori.Contains(player))
+            {
+                Pareggi[player]++;
+                MessageBox.Show($"Pareggio registrato per {player}");
+            }
+            else
+            {
+                MessageBox.Show("Giocatore non trovato.");
+            }
+            
+        }
+        public void Win()
+        {
+            string giocatore;
+            string Nome, Cognome, id;
+            Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
+            giocatore = Nome + " " + Cognome + " " + id;
+            if (Giocatori.Contains(giocatore))
+            {
+                Vittorie[giocatore]++;
+                MessageBox.Show($"Vittoria registrata per {giocatore}");
+                MessageBox.Show($"{Vittorie[giocatore]}");
+            }
+
+        }
+
+        private void winbutton_Click(object sender, EventArgs e)
+        {
+            int punti = 0;
+            Win();
+
+
+        }
+    } 
 }
+
+
+

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem2 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
             this.nome1 = new System.Windows.Forms.TextBox();
             this.id1 = new System.Windows.Forms.TextBox();
             this.cognome1 = new System.Windows.Forms.TextBox();
@@ -42,12 +42,14 @@
             this.start = new System.Windows.Forms.Button();
             this.winbutton = new System.Windows.Forms.Button();
             this.Classifica = new System.Windows.Forms.ListView();
+            this.drawbtn = new System.Windows.Forms.Button();
+            this.losebtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nome1
             // 
             this.nome1.Location = new System.Drawing.Point(251, 95);
-            this.nome1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.nome1.Margin = new System.Windows.Forms.Padding(4);
             this.nome1.Name = "nome1";
             this.nome1.Size = new System.Drawing.Size(132, 22);
             this.nome1.TabIndex = 0;
@@ -55,7 +57,7 @@
             // id1
             // 
             this.id1.Location = new System.Drawing.Point(255, 239);
-            this.id1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.id1.Margin = new System.Windows.Forms.Padding(4);
             this.id1.Name = "id1";
             this.id1.Size = new System.Drawing.Size(132, 22);
             this.id1.TabIndex = 1;
@@ -63,7 +65,7 @@
             // cognome1
             // 
             this.cognome1.Location = new System.Drawing.Point(251, 164);
-            this.cognome1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.cognome1.Margin = new System.Windows.Forms.Padding(4);
             this.cognome1.Name = "cognome1";
             this.cognome1.Size = new System.Drawing.Size(132, 22);
             this.cognome1.TabIndex = 2;
@@ -71,7 +73,7 @@
             // Add
             // 
             this.Add.Location = new System.Drawing.Point(16, 92);
-            this.Add.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Add.Margin = new System.Windows.Forms.Padding(4);
             this.Add.Name = "Add";
             this.Add.Size = new System.Drawing.Size(197, 28);
             this.Add.TabIndex = 3;
@@ -85,9 +87,9 @@
             this.gioccont});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem2});
+            listViewItem3});
             this.listView1.Location = new System.Drawing.Point(424, 55);
-            this.listView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
             this.listView1.Size = new System.Drawing.Size(404, 405);
             this.listView1.TabIndex = 4;
@@ -132,7 +134,7 @@
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(16, 146);
-            this.button1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.button1.Margin = new System.Windows.Forms.Padding(4);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(197, 28);
             this.button1.TabIndex = 9;
@@ -142,8 +144,8 @@
             // 
             // start
             // 
-            this.start.Location = new System.Drawing.Point(16, 239);
-            this.start.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.start.Location = new System.Drawing.Point(13, 219);
+            this.start.Margin = new System.Windows.Forms.Padding(4);
             this.start.Name = "start";
             this.start.Size = new System.Drawing.Size(197, 28);
             this.start.TabIndex = 10;
@@ -153,7 +155,7 @@
             // 
             // winbutton
             // 
-            this.winbutton.Location = new System.Drawing.Point(101, 348);
+            this.winbutton.Location = new System.Drawing.Point(16, 305);
             this.winbutton.Name = "winbutton";
             this.winbutton.Size = new System.Drawing.Size(75, 23);
             this.winbutton.TabIndex = 11;
@@ -171,11 +173,33 @@
             this.Classifica.UseCompatibleStateImageBehavior = false;
             this.Classifica.View = System.Windows.Forms.View.List;
             // 
+            // drawbtn
+            // 
+            this.drawbtn.Location = new System.Drawing.Point(205, 305);
+            this.drawbtn.Name = "drawbtn";
+            this.drawbtn.Size = new System.Drawing.Size(75, 23);
+            this.drawbtn.TabIndex = 13;
+            this.drawbtn.Text = "Pareggio";
+            this.drawbtn.UseVisualStyleBackColor = true;
+            this.drawbtn.Click += new System.EventHandler(this.drawbtn_Click);
+            // 
+            // losebtn
+            // 
+            this.losebtn.Location = new System.Drawing.Point(109, 305);
+            this.losebtn.Name = "losebtn";
+            this.losebtn.Size = new System.Drawing.Size(75, 23);
+            this.losebtn.TabIndex = 14;
+            this.losebtn.Text = "Sconfitta";
+            this.losebtn.UseVisualStyleBackColor = true;
+            this.losebtn.Click += new System.EventHandler(this.losebtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1856, 656);
+            this.Controls.Add(this.losebtn);
+            this.Controls.Add(this.drawbtn);
             this.Controls.Add(this.Classifica);
             this.Controls.Add(this.winbutton);
             this.Controls.Add(this.start);
@@ -188,9 +212,10 @@
             this.Controls.Add(this.cognome1);
             this.Controls.Add(this.id1);
             this.Controls.Add(this.nome1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -211,6 +236,8 @@
         private System.Windows.Forms.Button start;
         private System.Windows.Forms.Button winbutton;
         private System.Windows.Forms.ListView Classifica;
+        private System.Windows.Forms.Button drawbtn;
+        private System.Windows.Forms.Button losebtn;
     }
 }
 

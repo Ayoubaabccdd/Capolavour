@@ -212,19 +212,63 @@ namespace Capolavour
             if (Giocatori.Contains(giocatore))
             {
                 Vittorie[giocatore]++;
+                Vittorie[giocatore]++;
+                Vittorie[giocatore]++;
                 MessageBox.Show($"Vittoria registrata per {giocatore}");
-                MessageBox.Show($"{Vittorie[giocatore]}");
+                Classifica.Items.Add(giocatore + " " + Vittorie[giocatore]);
+            }
+
+        }
+        private void winbutton_Click(object sender, EventArgs e)
+        {
+            Win();
+        }
+
+        public void Lose()
+        {
+            string giocatore;
+            string Nome, Cognome, id;
+            Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
+            giocatore = Nome + " " + Cognome + " " + id;
+            if (Giocatori.Contains(giocatore))
+            {
+                
+                MessageBox.Show($"Sconfitta registrata per {giocatore}");
+                Classifica.Items.Add(giocatore + " " + Sconfitte[giocatore]);
+            }
+
+        }
+        private void losebtn_Click(object sender, EventArgs e)
+        {
+            Lose();
+        }
+        public void Draw()
+        {
+            string giocatore;
+            string Nome, Cognome, id;
+            Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
+            giocatore = Nome + " " + Cognome + " " + id;
+            if (Giocatori.Contains(giocatore))
+            {
+                Pareggi[giocatore]++;
+                MessageBox.Show($"Pareggio registrato per {giocatore}");
+                Classifica.Items.Add(giocatore + " " + Pareggi[giocatore]);
             }
 
         }
 
-        private void winbutton_Click(object sender, EventArgs e)
+        private void drawbtn_Click(object sender, EventArgs e)
         {
-            int punti = 0;
-            Win();
+            Draw();
+        }
 
+        private void Form1_Load(object sender, EventArgs e)
+        {
 
         }
+
+
+
     } 
 }
 

@@ -98,6 +98,23 @@ namespace Capolavour
                 listView1.Items.Add(Giocatori[j]);
             }
         }
+        private void VisualizzaClassifica()
+        {
+            Classifica.Items.Clear();
+
+            var classifica = Giocatori
+                .Select(g => new
+                {
+                    Giocatore = g,
+                    Punti = (Vittorie[g]) + (Pareggi[g])
+                })
+                .OrderByDescending(g => g.Punti);
+            for (int j = 0; j < Giocatori.Count; j++)
+            {
+                Classifica.Items.Add(Giocatori[j]);
+
+            }
+        }
 
 
         private void DEL_TextChanged(object sender, EventArgs e)
@@ -267,9 +284,70 @@ namespace Capolavour
 
         }
 
+        private void classbtn_Click(object sender, EventArgs e)
+        {
+            VisualizzaClassifica();
+        }
 
+        private void Turni()
+        {
+            int a = Giocatori.Count;
 
-    } 
+            
+            Math.Sqrt(a);
+            switch (a)
+            {
+                case 0: 
+
+                case 1:
+
+                case 2:
+
+                case 3:
+
+                case 4:
+
+                case 5:
+
+                case 6:
+
+                case 7:
+
+                case 8:
+
+                break;
+            }
+        }
+
+        private void CalcolaTurni()
+        {
+            if (Giocatori.Count % 2 != 0)
+            {
+                MessageBox.Show("Il numero di giocatori deve essere pari per creare i turni.");
+                return;
+            }
+
+            var abbinamenti = AbbinaGiocatoriPerTurno();
+            VisualizzaCoppie(abbinamenti);
+        }
+
+        private List<string> AbbinaGiocatoriPerTurno()
+        {
+            var giocatoriOrdinati = Giocatori
+                .OrderByDescending(g => (Vittorie[g] * 3) + Pareggi[g])
+                .ToList();
+
+            List<string> coppie = new List<string>();
+
+            for (int i = 0; i < giocatoriOrdinati.Count; i += 2)
+            {
+                coppie.Add(giocatoriOrdinati[i] + " vs " + giocatoriOrdinati[i + 1]);
+            }
+
+            return coppie;
+        }
+
+    }
 }
 
 

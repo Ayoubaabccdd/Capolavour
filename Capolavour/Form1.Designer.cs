@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem3 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
             this.nome1 = new System.Windows.Forms.TextBox();
             this.id1 = new System.Windows.Forms.TextBox();
             this.cognome1 = new System.Windows.Forms.TextBox();
@@ -44,6 +44,7 @@
             this.Classifica = new System.Windows.Forms.ListView();
             this.drawbtn = new System.Windows.Forms.Button();
             this.losebtn = new System.Windows.Forms.Button();
+            this.classbtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // nome1
@@ -87,11 +88,11 @@
             this.gioccont});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem3});
+            listViewItem1});
             this.listView1.Location = new System.Drawing.Point(424, 55);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(404, 405);
+            this.listView1.Size = new System.Drawing.Size(393, 405);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -193,11 +194,22 @@
             this.losebtn.UseVisualStyleBackColor = true;
             this.losebtn.Click += new System.EventHandler(this.losebtn_Click);
             // 
+            // classbtn
+            // 
+            this.classbtn.Location = new System.Drawing.Point(16, 389);
+            this.classbtn.Name = "classbtn";
+            this.classbtn.Size = new System.Drawing.Size(227, 23);
+            this.classbtn.TabIndex = 15;
+            this.classbtn.Text = "Visualizza Classifica Provissoria";
+            this.classbtn.UseVisualStyleBackColor = true;
+            this.classbtn.Click += new System.EventHandler(this.classbtn_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1856, 656);
+            this.Controls.Add(this.classbtn);
             this.Controls.Add(this.losebtn);
             this.Controls.Add(this.drawbtn);
             this.Controls.Add(this.Classifica);
@@ -238,6 +250,7 @@
         private System.Windows.Forms.ListView Classifica;
         private System.Windows.Forms.Button drawbtn;
         private System.Windows.Forms.Button losebtn;
+        private System.Windows.Forms.Button classbtn;
     }
 }
 

@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.ListViewItem listViewItem1 = new System.Windows.Forms.ListViewItem("");
+            System.Windows.Forms.ListViewItem listViewItem6 = new System.Windows.Forms.ListViewItem("");
             this.nome1 = new System.Windows.Forms.TextBox();
             this.id1 = new System.Windows.Forms.TextBox();
             this.cognome1 = new System.Windows.Forms.TextBox();
@@ -45,6 +45,12 @@
             this.drawbtn = new System.Windows.Forms.Button();
             this.losebtn = new System.Windows.Forms.Button();
             this.classbtn = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
+            this.Listagioc = new System.Windows.Forms.ListView();
+            this.label4 = new System.Windows.Forms.Label();
+            this.label5 = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // nome1
@@ -54,6 +60,7 @@
             this.nome1.Name = "nome1";
             this.nome1.Size = new System.Drawing.Size(132, 22);
             this.nome1.TabIndex = 0;
+            this.nome1.TextChanged += new System.EventHandler(this.nome1_TextChanged);
             // 
             // id1
             // 
@@ -88,11 +95,11 @@
             this.gioccont});
             this.listView1.HideSelection = false;
             this.listView1.Items.AddRange(new System.Windows.Forms.ListViewItem[] {
-            listViewItem1});
-            this.listView1.Location = new System.Drawing.Point(424, 55);
+            listViewItem6});
+            this.listView1.Location = new System.Drawing.Point(421, 110);
             this.listView1.Margin = new System.Windows.Forms.Padding(4);
             this.listView1.Name = "listView1";
-            this.listView1.Size = new System.Drawing.Size(393, 405);
+            this.listView1.Size = new System.Drawing.Size(306, 405);
             this.listView1.TabIndex = 4;
             this.listView1.UseCompatibleStateImageBehavior = false;
             this.listView1.View = System.Windows.Forms.View.List;
@@ -167,7 +174,7 @@
             // Classifica
             // 
             this.Classifica.HideSelection = false;
-            this.Classifica.Location = new System.Drawing.Point(949, 71);
+            this.Classifica.Location = new System.Drawing.Point(809, 140);
             this.Classifica.Name = "Classifica";
             this.Classifica.Size = new System.Drawing.Size(236, 317);
             this.Classifica.TabIndex = 12;
@@ -196,7 +203,7 @@
             // 
             // classbtn
             // 
-            this.classbtn.Location = new System.Drawing.Point(16, 389);
+            this.classbtn.Location = new System.Drawing.Point(26, 365);
             this.classbtn.Name = "classbtn";
             this.classbtn.Size = new System.Drawing.Size(227, 23);
             this.classbtn.TabIndex = 15;
@@ -204,11 +211,75 @@
             this.classbtn.UseVisualStyleBackColor = true;
             this.classbtn.Click += new System.EventHandler(this.classbtn_Click);
             // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(42, 419);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(184, 23);
+            this.button2.TabIndex = 16;
+            this.button2.Text = "Nuovo Turno";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(826, 463);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(204, 23);
+            this.button3.TabIndex = 17;
+            this.button3.Text = "Pulisci Classifica Provvisoria";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.button3_Click);
+            // 
+            // Listagioc
+            // 
+            this.Listagioc.HideSelection = false;
+            this.Listagioc.Location = new System.Drawing.Point(1127, 92);
+            this.Listagioc.Name = "Listagioc";
+            this.Listagioc.Size = new System.Drawing.Size(198, 435);
+            this.Listagioc.TabIndex = 18;
+            this.Listagioc.UseCompatibleStateImageBehavior = false;
+            this.Listagioc.View = System.Windows.Forms.View.List;
+            this.Listagioc.SelectedIndexChanged += new System.EventHandler(this.Listagioc_SelectedIndexChanged);
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(1154, 71);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(128, 16);
+            this.label4.TabIndex = 19;
+            this.label4.Text = "Lista Giocatori Iscritti";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(529, 90);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(72, 16);
+            this.label5.TabIndex = 20;
+            this.label5.Text = "Tabellone ";
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(880, 110);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(65, 16);
+            this.label6.TabIndex = 21;
+            this.label6.Text = "Classifica";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1856, 656);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.label5);
+            this.Controls.Add(this.label4);
+            this.Controls.Add(this.Listagioc);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
             this.Controls.Add(this.classbtn);
             this.Controls.Add(this.losebtn);
             this.Controls.Add(this.drawbtn);
@@ -251,6 +322,12 @@
         private System.Windows.Forms.Button drawbtn;
         private System.Windows.Forms.Button losebtn;
         private System.Windows.Forms.Button classbtn;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.ListView Listagioc;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.Label label6;
     }
 }
 

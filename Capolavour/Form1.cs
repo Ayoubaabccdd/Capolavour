@@ -25,9 +25,8 @@ namespace Capolavour
         }
 
         private List<string> Giocatori = new List<string>();
-        private Dictionary<string, int> Vittorie = new Dictionary<string, int>();
-        private Dictionary<string, int> Sconfitte = new Dictionary<string, int>();
-        private Dictionary<string, int> Pareggi = new Dictionary<string, int>();
+        private Dictionary<string, int> Punti = new Dictionary<string, int>();
+
 
 
 
@@ -45,10 +44,9 @@ namespace Capolavour
             else
             {
                 Giocatori.Add(giocatore);
-                listView1.Items.Add(giocatore);
-                Vittorie[giocatore] = 0;
-                Sconfitte[giocatore] = 0;
-                Pareggi[giocatore] = 0;
+                Listagioc.Items.Add(giocatore);
+                Punti[giocatore] = 0;
+
             }
 
         }
@@ -69,10 +67,8 @@ namespace Capolavour
             if (Giocatori.Contains(giocatore))
             {
                 Giocatori.Remove(giocatore);
-                Giocatori.Add(giocatore);
-                Vittorie[giocatore] = 0;
-                Sconfitte[giocatore] = 0;
-                Pareggi[giocatore] = 0;
+                Punti[giocatore] = 0;
+
             }
             else
             {
@@ -92,6 +88,14 @@ namespace Capolavour
 
         private void Visualizza()
         {
+            Listagioc.Items.Clear();
+            for (int j = 0; j < Giocatori.Count; j++)
+            {
+                Listagioc.Items.Add(Giocatori[j]);
+            }
+        }
+        private void VisualizzaTab()
+        {
             listView1.Items.Clear();
             for (int j = 0; j < Giocatori.Count; j++)
             {
@@ -101,18 +105,17 @@ namespace Capolavour
         private void VisualizzaClassifica()
         {
             Classifica.Items.Clear();
-
+ 
             var classifica = Giocatori
                 .Select(g => new
                 {
                     Giocatore = g,
-                    Punti = (Vittorie[g]) + (Pareggi[g])
+                    Punti = (Punti[g]) 
                 })
                 .OrderByDescending(g => g.Punti);
-            for (int j = 0; j < Giocatori.Count; j++)
+            foreach (var Giocatore in classifica)
             {
-                Classifica.Items.Add(Giocatori[j]);
-
+                Classifica.Items.Add(Giocatore.Giocatore);
             }
         }
 
@@ -133,8 +136,9 @@ namespace Capolavour
                 {
                     listView1.Items.Add(Giocatori[j]);
                 }
-                Visualizza();
-                AbbinaElementiCasualmente(Giocatori);
+                VisualizzaTab();
+                CalcolaTurni();
+                //AbbinaElementiCasualmente(Giocatori);
             }
             else
             {
@@ -162,7 +166,7 @@ namespace Capolavour
             // Crea le coppie
             for (int i = 0; i < n - 1; i += 2)
             {
-                coppie.Add((elementiMescolati[i] + "                " + elementiMescolati[i + 1]));
+                coppie.Add((elementiMescolati[i] + "       vs        " + elementiMescolati[i + 1]));
             }
 
             VisualizzaCoppie(coppie);
@@ -177,49 +181,6 @@ namespace Capolavour
                 listView1.Items.Add(coppie[j]);
             }
         }
-
-        public void Vittoria(object sender, EventArgs e)
-        {
-            string player = listView1.Items.ToString().Split(' ')[0];
-            if (Giocatori.Contains(player))
-            {
-                Vittorie[player]++;
-                MessageBox.Show($"Vittoria registrata per {player}");
-            }
-            else
-            {
-                MessageBox.Show("Giocatore non trovato.");
-            }
-        }
-
-        public void Pareggio(object sender, EventArgs e)
-        {
-            string player = listView1.Items.ToString().Split(' ')[0];
-            if (Giocatori.Contains(player))
-            {
-                Sconfitte[player]++;
-                MessageBox.Show($"Sconfitta registrata per {player}");
-            }
-            else
-            {
-                MessageBox.Show("Giocatore non trovato.");
-            }
-        }
-
-        public void Sconfitta(object sender, EventArgs e)
-        {
-            string player = listView1.Items.ToString().Split(' ')[0];
-            if (Giocatori.Contains(player))
-            {
-                Pareggi[player]++;
-                MessageBox.Show($"Pareggio registrato per {player}");
-            }
-            else
-            {
-                MessageBox.Show("Giocatore non trovato.");
-            }
-            
-        }
         public void Win()
         {
             string giocatore;
@@ -228,17 +189,19 @@ namespace Capolavour
             giocatore = Nome + " " + Cognome + " " + id;
             if (Giocatori.Contains(giocatore))
             {
-                Vittorie[giocatore]++;
-                Vittorie[giocatore]++;
-                Vittorie[giocatore]++;
+                Punti[giocatore]+= 3;
+
                 MessageBox.Show($"Vittoria registrata per {giocatore}");
-                Classifica.Items.Add(giocatore + " " + Vittorie[giocatore]);
+                Classifica.Items.Add(giocatore + " " + Punti[giocatore]);
             }
 
         }
         private void winbutton_Click(object sender, EventArgs e)
         {
             Win();
+            nome1.Text = "";
+            cognome1.Text = "";
+            id1.Text = "";
         }
 
         public void Lose()
@@ -251,13 +214,16 @@ namespace Capolavour
             {
                 
                 MessageBox.Show($"Sconfitta registrata per {giocatore}");
-                Classifica.Items.Add(giocatore + " " + Sconfitte[giocatore]);
+                Classifica.Items.Add(giocatore + " " + Punti[giocatore]);
             }
 
         }
         private void losebtn_Click(object sender, EventArgs e)
         {
             Lose();
+            nome1.Text = "";
+            cognome1.Text = "";
+            id1.Text = "";
         }
         public void Draw()
         {
@@ -267,9 +233,9 @@ namespace Capolavour
             giocatore = Nome + " " + Cognome + " " + id;
             if (Giocatori.Contains(giocatore))
             {
-                Pareggi[giocatore]++;
+                Punti[giocatore]++;
                 MessageBox.Show($"Pareggio registrato per {giocatore}");
-                Classifica.Items.Add(giocatore + " " + Pareggi[giocatore]);
+                Classifica.Items.Add(giocatore + " " + Punti[giocatore]);
             }
 
         }
@@ -277,6 +243,10 @@ namespace Capolavour
         private void drawbtn_Click(object sender, EventArgs e)
         {
             Draw();
+            nome1.Text = "";
+            cognome1.Text = "";
+            id1.Text = "";
+
         }
 
         private void Form1_Load(object sender, EventArgs e)
@@ -287,36 +257,6 @@ namespace Capolavour
         private void classbtn_Click(object sender, EventArgs e)
         {
             VisualizzaClassifica();
-        }
-
-        private void Turni()
-        {
-            int a = Giocatori.Count;
-
-            
-            Math.Sqrt(a);
-            switch (a)
-            {
-                case 0: 
-
-                case 1:
-
-                case 2:
-
-                case 3:
-
-                case 4:
-
-                case 5:
-
-                case 6:
-
-                case 7:
-
-                case 8:
-
-                break;
-            }
         }
 
         private void CalcolaTurni()
@@ -334,7 +274,7 @@ namespace Capolavour
         private List<string> AbbinaGiocatoriPerTurno()
         {
             var giocatoriOrdinati = Giocatori
-                .OrderByDescending(g => (Vittorie[g] * 3) + Pareggi[g])
+                .OrderByDescending(g => (Punti[g]))
                 .ToList();
 
             List<string> coppie = new List<string>();
@@ -347,6 +287,26 @@ namespace Capolavour
             return coppie;
         }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            CalcolaTurni();
+            Classifica.Items.Clear();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            Classifica.Items.Clear();
+        }
+
+        private void nome1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Listagioc_SelectedIndexChanged(object sender, EventArgs e)
+        {
+           
+        }
     }
 }
 

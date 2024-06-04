@@ -36,7 +36,7 @@ namespace Capolavour
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
             giocatore = Nome + " " + Cognome + " " + id;
-
+            //controlla l'esistenza del giocatore
             if (Giocatori.Contains(giocatore))
             {
                 MessageBox.Show("Giocatore inserito");
@@ -65,6 +65,7 @@ namespace Capolavour
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
             giocatore = Nome + " " + Cognome + " " + id;
+            //controlla l'esistenza del giocatore
             if (Giocatori.Contains(giocatore))
             {
                 Giocatori.Remove(giocatore);
@@ -108,7 +109,7 @@ namespace Capolavour
         private void VisualizzaClassifica()
         {
             Classifica.Items.Clear();
- 
+            //fa un sort in ordine decrescente di punti
             var classifica = Giocatori
                 .Select(g => new
                 {
@@ -116,9 +117,10 @@ namespace Capolavour
                     Punti = (Punti[g]) 
                 })
                 .OrderByDescending(g => g.Punti);
+            //aggiunge gli elementi nella classifica
             foreach (var Giocatore in classifica)
             {
-                Classifica.Items.Add(Giocatore.Giocatore + " " + Giocatore.Punti);
+                Classifica.Items.Add(Giocatore.Giocatore + "  punti tot:" + Giocatore.Punti);
             }
         }
 
@@ -132,6 +134,7 @@ namespace Capolavour
         //inizia il torneo creando gli abbinamenti tramite CalcolaTurni
         private void start_Click(object sender, EventArgs e)
         {
+            //stampa i giocatori nella lista degli iscritti e nel tabellone
             if (Giocatori.Count > 2)
             {
                 listView1.Clear();
@@ -142,7 +145,6 @@ namespace Capolavour
                 VisualizzaTab();
                 CalcolaTurni();
                 
-                //AbbinaElementiCasualmente(Giocatori);
             }
             else
             {
@@ -193,6 +195,7 @@ namespace Capolavour
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
             giocatore = Nome + " " + Cognome + " " + id;
+            //registra la vittoria
             if (Giocatori.Contains(giocatore))
             {
                 Punti[giocatore]+= 3;
@@ -202,6 +205,7 @@ namespace Capolavour
             }
 
         }
+        //bottone per assegnare la vittoria
         private void winbutton_Click(object sender, EventArgs e)
         {
             Win();
@@ -217,6 +221,7 @@ namespace Capolavour
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
             giocatore = Nome + " " + Cognome + " " + id;
+            //registra la sconfitta
             if (Giocatori.Contains(giocatore))
             {
                 
@@ -225,6 +230,7 @@ namespace Capolavour
             }
 
         }
+        //bottone per assegnare la sconfitta
         private void losebtn_Click(object sender, EventArgs e)
         {
             Lose();
@@ -239,6 +245,7 @@ namespace Capolavour
             string Nome, Cognome, id;
             Nome = nome1.Text; Cognome = cognome1.Text; id = id1.Text;
             giocatore = Nome + " " + Cognome + " " + id;
+            //registra il pareggio
             if (Giocatori.Contains(giocatore))
             {
                 Punti[giocatore]++;
@@ -247,7 +254,7 @@ namespace Capolavour
             }
 
         }
-
+        //bottone per assegnare il pareggio
         private void drawbtn_Click(object sender, EventArgs e)
         {
             Draw();

@@ -29,7 +29,7 @@ namespace Capolavour
 
 
 
-
+        //Aggiunge giocatore alla lista degli iscritti
         public void AddGiocatore()
         {
             string giocatore;
@@ -58,6 +58,7 @@ namespace Capolavour
             id1.Text = "";
         }
 
+        //rimuove giocatore alla lista degli iscritti
         public void DelGiocatore()
         {
             string giocatore;
@@ -85,7 +86,7 @@ namespace Capolavour
             id1.Text = "";
 
         }
-
+        //visualizza i giocatori nella lista degli iscritti
         private void Visualizza()
         {
             Listagioc.Items.Clear();
@@ -94,6 +95,7 @@ namespace Capolavour
                 Listagioc.Items.Add(Giocatori[j]);
             }
         }
+        //visualizza il tabellone degli abbinamenti
         private void VisualizzaTab()
         {
             listView1.Items.Clear();
@@ -102,6 +104,7 @@ namespace Capolavour
                 listView1.Items.Add(Giocatori[j]);
             }
         }
+        //visualizza classifica
         private void VisualizzaClassifica()
         {
             Classifica.Items.Clear();
@@ -115,7 +118,7 @@ namespace Capolavour
                 .OrderByDescending(g => g.Punti);
             foreach (var Giocatore in classifica)
             {
-                Classifica.Items.Add(Giocatore.Giocatore);
+                Classifica.Items.Add(Giocatore.Giocatore + " " + Giocatore.Punti);
             }
         }
 
@@ -126,7 +129,7 @@ namespace Capolavour
         }
 
 
-
+        //inizia il torneo creando gli abbinamenti tramite CalcolaTurni
         private void start_Click(object sender, EventArgs e)
         {
             if (Giocatori.Count > 2)
@@ -138,6 +141,7 @@ namespace Capolavour
                 }
                 VisualizzaTab();
                 CalcolaTurni();
+                
                 //AbbinaElementiCasualmente(Giocatori);
             }
             else
@@ -146,7 +150,7 @@ namespace Capolavour
             }
         }
 
-
+        //crea abbinamenti casuali mettendo in coppie le persone
         public List<string> AbbinaElementiCasualmente(List<string> elementi)
         {
             Random random = new Random();
@@ -173,6 +177,7 @@ namespace Capolavour
 
             return coppie;
         }
+        //visualizza le coppie nel tabellone
         private void VisualizzaCoppie(List<string> coppie)
         {
             listView1.Items.Clear();
@@ -181,6 +186,7 @@ namespace Capolavour
                 listView1.Items.Add(coppie[j]);
             }
         }
+        //assegna la vittoria al giocatore 
         public void Win()
         {
             string giocatore;
@@ -204,6 +210,7 @@ namespace Capolavour
             id1.Text = "";
         }
 
+        //assegna la sconfitta al giocatore 
         public void Lose()
         {
             string giocatore;
@@ -225,6 +232,7 @@ namespace Capolavour
             cognome1.Text = "";
             id1.Text = "";
         }
+        //assegna il pareggio al giocatore 
         public void Draw()
         {
             string giocatore;
@@ -259,6 +267,8 @@ namespace Capolavour
             VisualizzaClassifica();
         }
 
+    
+        //calcola i turni necessari per svolgere il torneo e vede se è possibile iniziarlo
         private void CalcolaTurni()
         {
             if (Giocatori.Count % 2 != 0)
@@ -270,7 +280,7 @@ namespace Capolavour
             var abbinamenti = AbbinaGiocatoriPerTurno();
             VisualizzaCoppie(abbinamenti);
         }
-
+        //abbina i giocatori in base al punteggio ottenuto nei vari turni
         private List<string> AbbinaGiocatoriPerTurno()
         {
             var giocatoriOrdinati = Giocatori
@@ -284,9 +294,10 @@ namespace Capolavour
                 coppie.Add(giocatoriOrdinati[i] + " vs " + giocatoriOrdinati[i + 1]);
             }
 
+            
             return coppie;
         }
-
+        //crea un nuovo turno con gli abbinamenti nuovi
         private void button2_Click(object sender, EventArgs e)
         {
             CalcolaTurni();
@@ -302,10 +313,30 @@ namespace Capolavour
         {
 
         }
-
+        //funzionalita per poter aggiungere i dati alle caselle cliccando direttamente dalla lista di giocatori
         private void Listagioc_SelectedIndexChanged(object sender, EventArgs e)
         {
-           
+            if(Listagioc.SelectedIndices.Count > 0)
+            {
+                int indexSelected = Listagioc.SelectedIndices[0];
+                var info = Giocatori[indexSelected].Split(' ');
+
+                nome1.Text = info[0];
+                if(info.Length > 1)
+                {
+                    cognome1.Text = info[1];
+                }
+                if(info.Length > 2)
+                {
+                    id1.Text = info[2];
+                }
+                
+            }
+        }
+        //fine torneo, visualizza la classifica finale
+        private void endbtn_Click(object sender, EventArgs e)
+        {
+            VisualizzaClassifica();
         }
     }
 }

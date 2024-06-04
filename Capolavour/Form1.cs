@@ -26,8 +26,20 @@ namespace Capolavour
 
         private List<string> Giocatori = new List<string>();
         private Dictionary<string, int> Punti = new Dictionary<string, int>();
+        private List<Giocatore> Giocatores = new List<Giocatore>();
 
+        public class Giocatore
+        {
+            int Punti;
+            string nome; string cognome; string id;
+            public Giocatore(string nome, string cognome, string id)
+            {
+                this.nome = nome;
+                this.cognome = cognome;
+                this.id = id;   
+            }
 
+        }
 
         //Aggiunge giocatore alla lista degli iscritti
         public void AddGiocatore()
